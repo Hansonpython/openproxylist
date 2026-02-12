@@ -1,5 +1,4 @@
 const config = {
-    "my_server": process.argv[2],
     "internet_server": "https://raw.githubusercontent.com/roosterkid/openproxylist/refs/heads/main/V2RAY_RAW.txt"
 }
 
@@ -10,14 +9,8 @@ async function asyncFetch(url) {
 }
 
 async function main() {
-    const myServerData = await asyncFetch(config.my_server);
     const internetServerData = await asyncFetch(config.internet_server);
-    const allData = [
-        ...myServerData,
-        ...(internetServerData.filter(
-            line => line.includes("-US")
-        ))
-    ];
+    const allData = ...(internetServerData.filter(line => line.includes("-US")));
     require("fs").writeFileSync("sublink.txt", allData.join("\n"), "utf-8");
 }
 
