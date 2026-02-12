@@ -10,7 +10,7 @@ async function asyncFetch(url) {
 
 async function main() {
     const internetServerData = await asyncFetch(config.internet_server);
-    const allData = ...(internetServerData.filter(line => line.includes("-US")));
+    const allData = internetServerData.filter(line => line.includes("-US"));
     require("fs").writeFileSync("sublink.txt", allData.join("\n"), "utf-8");
 }
 
